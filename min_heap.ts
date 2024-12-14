@@ -16,7 +16,7 @@ export class MinHeap<T> extends Array<T> {
     return this.length;
   }
 
-  pop(): T | undefined {
+  override pop(): T | undefined {
     if (this.length === 0) return;
 
     const top = this[0];
