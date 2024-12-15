@@ -1,7 +1,11 @@
-export class MinHeap<T> extends Array<T> {
+export class Heap<T> extends Array<T> {
   private currIdx = 0;
 
-  constructor(heap: T[] = []) {
+  constructor(
+    heap: T[] = [],
+    private compare: (a: T, b: T) => number = (a, b) =>
+      a < b ? -1 : a > b ? 1 : 0,
+  ) {
     super();
     heap.forEach((x) => this.push(x));
   }
@@ -28,7 +32,7 @@ export class MinHeap<T> extends Array<T> {
 
   heapifyUp() {
     this.currIdx = this.length - 1;
-    while (this.hasParent && this.curr < this.parent) {
+    while (this.hasParent && this.compare(this.curr, this.parent) < 0) {
       this.swapAndMoveTo(this.parentIdx);
     }
   }
@@ -36,10 +40,10 @@ export class MinHeap<T> extends Array<T> {
   heapifyDown() {
     this.currIdx = 0;
     while (
-      (this.hasLeft && this.curr > this.left) ||
-      (this.hasRight && this.curr > this.right)
+      (this.hasLeft && this.compare(this.curr, this.left) > 0) ||
+      (this.hasRight && this.compare(this.curr, this.right) > 0)
     ) {
-      if (this.hasRight && this.right < this.left) {
+      if (this.hasRight && this.compare(this.right, this.left) < 0) {
         this.swapAndMoveTo(this.rightIdx);
       } else {
         this.swapAndMoveTo(this.leftIdx);

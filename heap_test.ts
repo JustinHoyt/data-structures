@@ -1,9 +1,9 @@
-import { MinHeap } from "./min_heap.ts";
+import { Heap } from "./heap.ts";
 import { assertEquals } from "@std/assert";
 import { ascend, BinaryHeap } from "jsr:@std/data-structures";
 
-Deno.test("MinHeap: should handle duplicates", () => {
-  const heap = new MinHeap([3, 5, 4, 4, 3, 3, 2, 1, 2]);
+Deno.test("Heap: should handle duplicates", () => {
+  const heap = new Heap([3, 5, 4, 4, 3, 3, 2, 1, 2]);
 
   const actual = [];
   let next: number | undefined = 0;
@@ -14,26 +14,26 @@ Deno.test("MinHeap: should handle duplicates", () => {
   assertEquals(actual, [1, 2, 2, 3, 3, 3, 4, 4, 5]);
 });
 
-Deno.test("MinHeap: should handle single entry", () => {
-  const heap = new MinHeap([3]);
+Deno.test("Heap: should handle single entry", () => {
+  const heap = new Heap([3]);
 
   assertEquals(heap.pop(), 3);
   assertEquals(heap.length, 0);
 });
 
-Deno.test("MinHeap: should do nothing on empty array", () => {
-  const heap = new MinHeap([]);
+Deno.test("Heap: should do nothing on empty array", () => {
+  const heap = new Heap([]);
 
   assertEquals(heap.length, 0);
 });
 
-Deno.test("MinHeap: should handle large heap", () => {
+Deno.test("Heap: should handle large heap", () => {
   const testArr = Array<number>(100_000).fill(0).map(
     () => Math.floor(Math.random() * 100_000),
   );
   const expected = testArr.toSorted((a, b) => a - b);
 
-  const heap = new MinHeap(testArr);
+  const heap = new Heap(testArr);
   const actual: number[] = [];
   let next: number | undefined = 0;
   while ((next = heap.pop()) != null) {
