@@ -34,14 +34,14 @@ export class Heap<T> extends Array<T> {
     return top;
   }
 
-  heapifyUp() {
+  private heapifyUp() {
     this.currIdx = this.length - 1;
     while (this.hasParent && this.compare(this.curr, this.parent) < 0) {
       this.swapAndMoveTo(this.parentIdx);
     }
   }
 
-  heapifyDown() {
+  private heapifyDown() {
     this.currIdx = 0;
     while (
       (this.hasLeft && this.compare(this.curr, this.left) > 0) ||
@@ -55,51 +55,47 @@ export class Heap<T> extends Array<T> {
     }
   }
 
-  get leftIdx() {
+  private get leftIdx() {
     return 2 * this.currIdx + 1;
   }
 
-  get rightIdx() {
+  private get rightIdx() {
     return 2 * this.currIdx + 2;
   }
 
-  get parentIdx() {
+  private get parentIdx() {
     return Math.floor((this.currIdx - 1) / 2);
   }
 
-  get hasParent() {
+  private get hasParent() {
     return this.currIdx > 0;
   }
 
-  get hasLeft() {
+  private get hasLeft() {
     return this.leftIdx < this.length;
   }
 
-  get hasRight() {
+  private get hasRight() {
     return this.rightIdx < this.length;
   }
 
-  get hasLeftAndRight() {
-    return this.hasLeft && this.hasRight;
-  }
-
-  get parent() {
+  private get parent() {
     return this[this.parentIdx];
   }
 
-  get curr() {
+  private get curr() {
     return this[this.currIdx];
   }
 
-  get left() {
+  private get left() {
     return this[this.leftIdx];
   }
 
-  get right() {
+  private get right() {
     return this[this.rightIdx];
   }
 
-  swapAndMoveTo(swapIdx: number) {
+  private swapAndMoveTo(swapIdx: number) {
     [this[this.currIdx], this[swapIdx]] = [this[swapIdx], this[this.currIdx]];
     this.currIdx = swapIdx;
   }
