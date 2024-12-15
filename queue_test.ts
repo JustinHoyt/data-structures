@@ -5,10 +5,9 @@ Deno.test("should insert and remove ordered list in order", () => {
   const queue = new Queue(1, 2, 3, 4, 5);
   assertEquals(queue.length, 5);
 
-  const actual = [];
-  let next: number | undefined = 0;
-  while ((next = queue.pop()) != null) {
-    actual.push(next);
+  const actual: number[] = [];
+  while (!queue.isEmpty()) {
+    actual.push(queue.dequeue()!);
   }
 
   assertEquals(actual, [1, 2, 3, 4, 5]);
@@ -17,9 +16,9 @@ Deno.test("should insert and remove ordered list in order", () => {
 
 Deno.test("should handle single entry", () => {
   const queue = new Queue();
-  queue.push(3);
+  queue.enqueue(3);
 
-  assertEquals(queue.pop(), 3);
+  assertEquals(queue.dequeue(), 3);
   assertEquals(queue.size, 0);
 });
 
@@ -27,7 +26,7 @@ Deno.test("should do nothing on empty array", () => {
   const queue = new Queue();
 
   assertEquals(queue.size, 0);
-  assertEquals(queue.pop(), undefined);
+  assertEquals(queue.dequeue(), undefined);
 });
 
 Deno.test("should handle large queue", () => {
@@ -37,9 +36,8 @@ Deno.test("should handle large queue", () => {
 
   const queue = new Queue(...testArr);
   const actual: number[] = [];
-  let next: number | undefined = 0;
-  while ((next = queue.pop()) != null) {
-    actual.push(next);
+  while (!queue.isEmpty()) {
+    actual.push(queue.dequeue()!);
   }
 
   assertEquals(actual, testArr);
@@ -48,7 +46,7 @@ Deno.test("should handle large queue", () => {
 Deno.test("dequeuing multiple times on an empty queue should not affect size", () => {
   const queue = new Queue();
 
-  assertEquals(queue.pop(), undefined);
-  assertEquals(queue.pop(), undefined);
+  assertEquals(queue.dequeue(), undefined);
+  assertEquals(queue.dequeue(), undefined);
   assertEquals(queue.size, 0);
 });

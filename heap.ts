@@ -10,6 +10,10 @@ export class Heap<T> extends Array<T> {
     heap.forEach((x) => this.push(x));
   }
 
+  isEmpty() {
+    return this.length === 0;
+  }
+
   peek() {
     return this[0];
   }

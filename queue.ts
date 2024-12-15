@@ -5,7 +5,15 @@ export class Queue<T> extends Array<T> {
     return this.length - this.offset;
   }
 
-  override pop() {
+  isEmpty() {
+    return this.size === 0;
+  }
+
+  enqueue(val: T) {
+    this.push(val);
+  }
+
+  dequeue() {
     if (this.size === 0) return;
 
     if (this.offset > this.length / 2) {

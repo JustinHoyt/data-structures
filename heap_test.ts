@@ -6,9 +6,8 @@ Deno.test("Heap: should handle duplicates", () => {
   const heap = new Heap([3, 5, 4, 4, 3, 3, 2, 1, 2]);
 
   const actual = [];
-  let next: number | undefined = 0;
-  while ((next = heap.pop()) != null) {
-    actual.push(next);
+  while (!heap.isEmpty()) {
+    actual.push(heap.pop());
   }
 
   assertEquals(actual, [1, 2, 2, 3, 3, 3, 4, 4, 5]);
@@ -35,9 +34,8 @@ Deno.test("Heap: should handle large heap", () => {
 
   const heap = new Heap(testArr);
   const actual: number[] = [];
-  let next: number | undefined = 0;
-  while ((next = heap.pop()) != null) {
-    actual.push(next);
+  while (!heap.isEmpty()) {
+    actual.push(heap.pop()!);
   }
 
   assertEquals(actual, expected);
@@ -48,9 +46,9 @@ Deno.test("BinaryHeap: should insert and remove descending ordered list in ascen
   const heap = new BinaryHeap<number>(ascend);
   heap.push(5, 4, 3, 2, 1);
 
-  const actual = [];
+  const actual: number[] = [];
   while (!heap.isEmpty()) {
-    actual.push(heap.pop());
+    actual.push(heap.pop()!);
   }
 
   assertEquals(actual, [1, 2, 3, 4, 5]);
