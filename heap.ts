@@ -10,15 +10,15 @@ export class Heap<T> extends Array<T> {
     heap.forEach((x) => this.push(x));
   }
 
-  isEmpty() {
+  isEmpty(): boolean {
     return this.length === 0;
   }
 
-  peek() {
+  peek(): T {
     return this[0];
   }
 
-  override push(num: T) {
+  override push(num: T): number {
     super.push(num);
     this.heapifyUp();
     return this.length;
@@ -34,14 +34,14 @@ export class Heap<T> extends Array<T> {
     return top;
   }
 
-  private heapifyUp() {
+  private heapifyUp(): void {
     this.currIdx = this.length - 1;
     while (this.hasParent && this.compare(this.curr, this.parent) < 0) {
       this.swapAndMoveTo(this.parentIdx);
     }
   }
 
-  private heapifyDown() {
+  private heapifyDown(): void {
     this.currIdx = 0;
     while (
       (this.hasLeft && this.compare(this.curr, this.left) > 0) ||
@@ -55,47 +55,47 @@ export class Heap<T> extends Array<T> {
     }
   }
 
-  private get leftIdx() {
+  private get leftIdx(): number {
     return 2 * this.currIdx + 1;
   }
 
-  private get rightIdx() {
+  private get rightIdx(): number {
     return 2 * this.currIdx + 2;
   }
 
-  private get parentIdx() {
+  private get parentIdx(): number {
     return Math.floor((this.currIdx - 1) / 2);
   }
 
-  private get hasParent() {
+  private get hasParent(): boolean {
     return this.currIdx > 0;
   }
 
-  private get hasLeft() {
+  private get hasLeft(): boolean {
     return this.leftIdx < this.length;
   }
 
-  private get hasRight() {
+  private get hasRight(): boolean {
     return this.rightIdx < this.length;
   }
 
-  private get parent() {
+  private get parent(): T {
     return this[this.parentIdx];
   }
 
-  private get curr() {
+  private get curr(): T {
     return this[this.currIdx];
   }
 
-  private get left() {
+  private get left(): T {
     return this[this.leftIdx];
   }
 
-  private get right() {
+  private get right(): T {
     return this[this.rightIdx];
   }
 
-  private swapAndMoveTo(swapIdx: number) {
+  private swapAndMoveTo(swapIdx: number): void {
     [this[this.currIdx], this[swapIdx]] = [this[swapIdx], this[this.currIdx]];
     this.currIdx = swapIdx;
   }

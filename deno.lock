@@ -20,6 +20,17 @@
       "integrity": "54a546004f769c1ac9e025abd15a76b6671ddc9687e2313b67376125650dc7ba"
     }
   },
+  "redirects": {
+    "http://raw.github.com/JustinHoyt/data-structures/refs/heads/main/heap.ts": "https://raw.github.com/JustinHoyt/data-structures/refs/heads/main/heap.ts",
+    "https://raw.github.com/JustinHoyt/data-structures/refs/heads/main/heap.ts": "https://raw.githubusercontent.com/JustinHoyt/data-structures/refs/heads/main/heap.ts",
+    "https://raw.github.com/justinhoyt/data-structures/main/heap.ts": "https://raw.githubusercontent.com/justinhoyt/data-structures/main/heap.ts",
+    "https://raw.github.com/justinhoyt/data-structures/refs/heads/main/heap.ts": "https://raw.githubusercontent.com/justinhoyt/data-structures/refs/heads/main/heap.ts"
+  },
+  "remote": {
+    "https://raw.githubusercontent.com/JustinHoyt/data-structures/refs/heads/main/heap.ts": "ac2d04f5971dce7028c8ad5039503ecf1126ec4f258786af27a9647e439e5fd3",
+    "https://raw.githubusercontent.com/justinhoyt/data-structures/main/heap.ts": "ac2d04f5971dce7028c8ad5039503ecf1126ec4f258786af27a9647e439e5fd3",
+    "https://raw.githubusercontent.com/justinhoyt/data-structures/refs/heads/main/heap.ts": "ac2d04f5971dce7028c8ad5039503ecf1126ec4f258786af27a9647e439e5fd3"
+  },
   "workspace": {
     "dependencies": [
       "jsr:@std/assert@1"

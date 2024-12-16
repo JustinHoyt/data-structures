@@ -6,23 +6,23 @@ export class Queue<T> {
     this.arr.push(...vals);
   }
 
-  get size() {
+  get size(): number {
     return this.arr.length - this.offset;
   }
 
-  isEmpty() {
+  isEmpty(): boolean {
     return this.size === 0;
   }
 
-  peek() {
+  peek(): T {
     return this.arr[0];
   }
 
-  enqueue(val: T) {
+  enqueue(val: T): void {
     this.arr.push(val);
   }
 
-  dequeue() {
+  dequeue(): T | undefined {
     if (this.size === 0) return;
 
     if (this.offset > this.arr.length / 2) {
