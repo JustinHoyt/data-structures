@@ -3,8 +3,16 @@
 These data structures are created to fill some gaps in JavaScript's standard
 library.
 
-They are created for coding challenges, so they are simple, with easy to explain
-code, have no dependencies, and are easy to copy/paste into an editor;
+They are created for coding challenges with the following goals:
+
+- Simplicity
+- Readability
+- Portability
+
+These data structures are easy to copy and paste into an editor for coding
+challenges in any coding environment. They are simple to use and only implement
+essential functionality. They are also simple enough to write from scratch if
+required.
 
 ```ts
 import { Heap } from "@justin/data-structures";

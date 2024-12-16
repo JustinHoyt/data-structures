@@ -28,7 +28,7 @@ export class DefaultMap<K, V> extends Map<K, V> {
   /**
    * Construct a DefaultMap.
    *
-   * @param	init A default value factory
+   * @param	init A default value factory.
    * @param vals An iterable used to initialize the DefaultMap.
    */
   constructor(private init: () => V, vals?: Iterable<[K, V]>) {
@@ -36,7 +36,7 @@ export class DefaultMap<K, V> extends Map<K, V> {
   }
 
   /**
-   * Get the value associated with the key or initialize the key with the default value factory
+   * Get the value associated with the key or initialize the key with the default value factory.
    */
   override get(key: K): V {
     return super.get(key) ?? super.set(key, this.init()).get(key);

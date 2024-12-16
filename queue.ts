@@ -60,6 +60,7 @@ export class Queue<T> {
   dequeue(): T | undefined {
     if (this.size === 0) return;
 
+    // Downsize the underlying array if more than half of the indexes are unreachable
     if (this.offset > this.arr.length / 2) {
       this.arr.splice(0, this.offset);
       this.offset = 0;
